@@ -5,69 +5,72 @@ var wordList = ["elephant", "giraffe", "tiger", "turtle"];
 var wordImage =["imageE.jpg", "imageG.jpg", "imageT.jpg", "imageTU.jpg"];
 
 // Variables
-var wins = 0;
-var losses =0;
-var guessesRemaining = 0;
-var guessedLetter = [];
-var underScore = [];
-var answerupdate = [];
 
-//Choose word randomly
-var ranWord = Math.floor(Math.random() * wordList.length);
-var choosenWord = wordList[ranWord];
+var userGuess = [];
+var wrongLetter = [];
+var rightLetter = [];
+var allowedGuesses = 9;
+
+var currentWord = document.getElementById("currentWord");
+var guessRemaining = document.getElementById("guessesRemaining");
+var letterGuessed = document.getElementById("guessedLetter");
 
 
-// Create underscores based on word length
+function startGame (){
 
- for (let i = 0; i < choosenWord.length; i++){
-        underScore.push("_");
-    var word = document.getElementById("currentWord");
-    word.innerHTML = underScore;
-    answerupdate = underScore;
+//Choose word randomly 
+    ranWord = wordList[Math.floor(Math.random() * wordList.length)];
+
+    for (var i = 0; i < ranWord.length; i++){
+
+// Create underscores
+     rightLetter.push(" _ ");
+}
+   currentWord.innerHTML = rightLetter.join(" ");
+   guessRemaining.innerHTML = allowedGuesses; 
+
+} 
+
+function updateGuessed(letter){
+    allowedGuesses--;
+    guessRemaining.innerHTML = allowedGuesses;
+
+    if (ranWord.indexOf(letter) === -1){
+    wrongLetter.push(letter);
+    letterGuessed.innerHTML = wrongLetter.join(" , ");
+    console.log(wrongLetter);
+    
+}
+    else{
+        for(var i = 0; i < ranWord.length; i++){
+            if( ranWord[i] === letter){
+                rightLetter[i] = letter;
+            }
+        }
+
+        currentWord.innerHTML = rightLetter.join(" ");
+    }
 }
 
+function winLose(){
+
+    if(rightLetter.indexOf(ranWord) == -1){
+        alert("Congratulations You Win");
+    }
+    else if(allowedGuesses === 0){
+        alert("Sorry you Lost");
+    }
+    winLose();
+}  
 
 // Get user guess
 
 document.onkeyup = function(event){
-    var userGuess = event.key;
-    var matched = false;
-    for (let j = 0; j < ranWord.length; j++){
-        var char = ranWord[j];
-        if(char == userGuess) {
-            matched = true;
-            answerupdate[j] = userGuess;
-        }
-    }
 
-    if (matched == true){
-        var nextword = document.getElementById("currentWord");
-        var wins = document.getElementById ("ws")
-        nextword.innerHTML = answerupdate;
-    }
+   var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+   updateGuessed(userGuess);
+    
+};
 
-    if (answerupdate.join("") === ranWord){
-        wins++;
-        document.getElementById("ws").innerHTML = wins;
-        console.log(wins);
-    }
-
-    else if (matched == false){
-        var takeid = document.getElementById("guessedAlready");
-        var guessleft = document.getElementById("guesses")
-        var lose = document.getElementById("ls")
-        takeid.innerHTML += event.key;
-        guessesRemaining--;
-        guessesRemaining.innerHTML = guessesRemaining;
-        
-        if (guessesRemaining == 0){
-            var lost = document.getElementById("ls");
-            console.log("reset");
-            losses++;
-            lost.innerHTML = losses;
-        }
-    }
-}
-
-
+startGame();
 
