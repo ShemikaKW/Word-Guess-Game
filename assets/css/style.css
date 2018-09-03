@@ -1,0 +1,65 @@
+  
+html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://i.ytimg.com/vi/QjuZhPjMnkE/maxresdefault.jpg);
+  }
+  
+  
+
+
+.container {
+    margin: 8% 0 0 25%;
+    background-color: aliceblue;
+    width: 650px;
+    height: 600px;
+}
+
+
+
+.columnleft {
+    margin-right: 15%;
+    border: solid 2px black;
+    border-style: inset;
+    float: left;
+    width: 40%;
+
+    
+}
+
+.columnright {
+    border: solid 2px black;
+    border-style: inset;
+    float: left;
+    width: 40%;
+}
+
+
+
+h1 {
+    text-align: center;
+    margin-top: 5%;
+}
+
+strong{
+    font-size: 125px;
+}
+
+h4 {
+    text-align: center;
+}
+
+
+
+#currentWord {
+    text-align: center;
+}
+
+@media (max-height: 700px) {
+    .bottomAnim {
+      background-size: auto 65%;
+    }

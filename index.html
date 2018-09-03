@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Reset -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+        <h1><strong>HANGMAN</strong></h1>
+        </header>
+
+    
+
+    <!--Left Column-->
+
+    <div class="row">
+        <div class="columnleft">
+
+            <div class="column-body">
+               <h4>Press any key to get started!</h4> 
+                
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="columnright">
+
+            <div class="column-body">
+                <h4 id="current-word">Current Word</h4>
+                <div id="currentWord"></div>
+                <h5 class="content">Number of Guesses:
+                    <h6 id="guesses">8</h6>
+                </h5>
+                <p id="guessedAlready">Letters Aleady Guessed: </p>
+                <p class="wins">Wins:
+                    <h6 id="ws">
+                </p>
+                <p class="losses">Losses:
+                    <h6 id="ls">
+                </p>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    </div>
+
+    <!--Javascript -->
+    <script type="text/javascript" src="assets/javascript/games.js"></script>
+
+</body>
+
+</html>
