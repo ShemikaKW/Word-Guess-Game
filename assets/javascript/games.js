@@ -9,14 +9,16 @@ var wordImage =["imageE.jpg", "imageG.jpg", "imageT.jpg", "imageTU.jpg"];
 var userGuess = [];
 var wrongLetter = [];
 var rightLetter = [];
+var wins = 1;
 var allowedGuesses = 9;
 
 var currentWord = document.getElementById("currentWord");
 var guessRemaining = document.getElementById("guessesRemaining");
 var letterGuessed = document.getElementById("guessedLetter");
+var won = document.getElementById("win");
 
 
-function startGame (){
+function startGame(){
 
 //Choose word randomly 
     ranWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -54,13 +56,17 @@ function updateGuessed(letter){
 
 function winLose(){
 
-    if(rightLetter.indexOf(ranWord) == -1){
+    if(rightLetter.indexOf(" _ ") === -1){
+        won.innerHTML = wins;
         alert("Congratulations You Win");
+        wins++;
+        updateGuessed();
     }
     else if(allowedGuesses === 0){
         alert("Sorry you Lost");
+        updateGuessed();
     }
-    winLose();
+    
 }  
 
 // Get user guess
@@ -69,7 +75,7 @@ document.onkeyup = function(event){
 
    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
    updateGuessed(userGuess);
-    
+   winLose();
 };
 
 startGame();

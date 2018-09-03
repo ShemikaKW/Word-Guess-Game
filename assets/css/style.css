@@ -14,7 +14,7 @@ html {
 
 .container {
     margin: 8% 0 0 25%;
-    background-color: aliceblue;
+    background-color: transparent;
     width: 650px;
     height: 600px;
 }
@@ -26,7 +26,10 @@ html {
     border: solid 2px black;
     border-style: inset;
     float: left;
-    width: 40%;
+    width: 50%;
+    height: 400px;
+    background-color: cornsilk;
+    font-family: merienda;
 
     
 }
@@ -35,7 +38,10 @@ html {
     border: solid 2px black;
     border-style: inset;
     float: left;
-    width: 40%;
+    width: 30%;
+    height: 400px;
+    background-color: cornsilk;
+    font-family: Merienda;
 }
 
 
@@ -43,11 +49,14 @@ html {
 h1 {
     text-align: center;
     margin-top: 5%;
+    font-size: 125px;
+    font-family: merienda;
+
 }
 
-strong{
-    font-size: 125px;
-}
+
+
+
 
 h4 {
     text-align: center;
