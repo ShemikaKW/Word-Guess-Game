@@ -2,7 +2,7 @@
 var wordList = ["elephant", "giraffe", "tiger", "turtle"];
 
 //Image List
-var wordImage =["imageE.jpg", "imageG.jpg", "imageT.jpg", "imageTU.jpg"];
+var wordImage =["assets/images/imageE", "imageG.jpg", "imageT.jpg", "imageTU.jpg"];
 
 // Variables
 
@@ -19,6 +19,11 @@ var won = document.getElementById("win");
 
 
 function startGame(){
+
+// Reset
+rightLetter = [];
+allowedGuesses = 9;
+wrongLetter = [];
 
 //Choose word randomly 
     ranWord = wordList[Math.floor(Math.random() * wordList.length)];
