@@ -40,7 +40,6 @@ function updateGuessed(letter){
     if (ranWord.indexOf(letter) === -1){
     wrongLetter.push(letter);
     letterGuessed.innerHTML = wrongLetter.join(" , ");
-    console.log(wrongLetter);
     
 }
     else{
@@ -60,11 +59,13 @@ function winLose(){
         won.innerHTML = wins;
         alert("Congratulations You Win");
         wins++;
-        updateGuessed();
+        startGame();
+    
     }
     else if(allowedGuesses === 0){
         alert("Sorry you Lost");
-        updateGuessed();
+        startGame();
+    
     }
     
 }  
@@ -77,6 +78,7 @@ document.onkeyup = function(event){
    updateGuessed(userGuess);
    winLose();
 };
+
 
 startGame();
 
