@@ -2,7 +2,7 @@
 var wordList = ["elephant", "giraffe", "tiger", "turtle"];
 
 //Image List
-var wordImage =["assets/images/imageE", "imageG.jpg", "imageT.jpg", "imageTU.jpg"];
+var wordImage =["assets/images/imageE", "assets/images/imageG.jpg", "assests/images/imageT.jpg", "assets/images/imageTU.jpg"];
 
 // Variables
 
@@ -16,7 +16,8 @@ var currentWord = document.getElementById("currentWord");
 var guessRemaining = document.getElementById("guessesRemaining");
 var letterGuessed = document.getElementById("guessedLetter");
 var won = document.getElementById("win");
-
+var outputW = document.getElementById("winText");
+var outputL = document.getElementById("loseText");
 
 function startGame(){
 
@@ -62,18 +63,20 @@ function winLose(){
 
     if(rightLetter.indexOf(" _ ") === -1){
         won.innerHTML = wins;
-        alert("Congratulations You Win");
+        outputW.innerHTML = ("Congratulations You Win");
         wins++;
         startGame();
     
     }
     else if(allowedGuesses === 0){
-        alert("Sorry you Lost");
+        outputL.innerHTML = ("Sorry you Lost");
         startGame();
     
     }
     
 }  
+
+
 
 // Get user guess
 
