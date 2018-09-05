@@ -2,16 +2,16 @@
 var wordList = ["elephant", "giraffe", "tiger", "turtle", "zebra", "lion", "gorilla"];
 
 //Image List
-var wordImage =["assets/images/imageE.jpg", "assets/images/imageG.jpg", "assets/images/imageT.jpg", "assets/images/imageTU.jpg", "assets/images/imagesZ.jpg",
-"assets/images/lion.jpg", "assets/images/gorilla.jpg"];
+var wordImage = ["assets/images/imageE.jpg", "assets/images/imageG.jpg", "assets/images/imageT.jpg", "assets/images/imageTU.jpg", "assets/images/imagesZ.jpg",
+    "assets/images/lion.jpg", "assets/images/gorilla.jpg"];
 
 // Variables
 
 var userGuess = [];
 var wrongLetter = [];
 var rightLetter = [];
-var wins = 1;
-var allowedGuesses = 9;
+var wins = 0;
+var allowedGuesses = 10;
 
 var currentWord = document.getElementById("currentWord");
 var guessRemaining = document.getElementById("guessesRemaining");
@@ -19,44 +19,51 @@ var letterGuessed = document.getElementById("guessedLetter");
 var won = document.getElementById("win");
 var outputW = document.getElementById("winText");
 var outputL = document.getElementById("loseText");
-// var image = document.getElementById("wordImage");
+
 
 // Start of Game
-function startGame(){
+function startGame() {
 
-// Reset for after each word
-rightLetter = [];
-allowedGuesses = 9;
-wrongLetter = [];
-// outputL = [];
-// outputW =[];
+    // Reset for after each word
+    rightLetter = [];
+    allowedGuesses = 10;
+    wrongLetter = [];
 
-//Choose word randomly 
+
+    //Choose word randomly 
     ranWord = wordList[Math.floor(Math.random() * wordList.length)];
 
-    for (var i = 0; i < ranWord.length; i++){
+    for (var i = 0; i < ranWord.length; i++) {
 
-// Create underscores
-     rightLetter.push(" _ ");
-}
-   currentWord.innerHTML = rightLetter.join(" ");
-   guessRemaining.innerHTML = allowedGuesses; 
-
-} 
-
-function updateGuessed(letter){
-    allowedGuesses--;
+        // Create underscores
+        rightLetter.push(" _ ");
+    }
+    currentWord.innerHTML = rightLetter.join(" ");
     guessRemaining.innerHTML = allowedGuesses;
 
-    if (ranWord.indexOf(letter) === -1){
-    wrongLetter.push(letter);
-    letterGuessed.innerHTML = wrongLetter.join(" , ");
-    
 }
-    else{
-        for(var i = 0; i < ranWord.length; i++){
-            if( ranWord[i] === letter){
+
+function updateGuessed(letter) {
+
+    if (wrongLetter.indexOf(letter) > -1) {
+        outputL.innerHTML = ("Already Guessed Letter");
+    }
+
+    else if (ranWord.indexOf(letter) === -1) {
+        wrongLetter.push(letter);
+        letterGuessed.innerHTML = wrongLetter.join(" , ");
+        allowedGuesses--;
+        guessRemaining.innerHTML = allowedGuesses;
+
+    }
+    else {
+        allowedGuesses--;
+        guessRemaining.innerHTML = allowedGuesses;
+
+        for (var i = 0; i < ranWord.length; i++) {
+            if (ranWord[i] === letter) {
                 rightLetter[i] = letter;
+
             }
         }
 
@@ -65,34 +72,40 @@ function updateGuessed(letter){
 }
 
 // Win or Lose output
-function winLose(){
+function winLose() {
 
-    if(rightLetter.indexOf(" _ ") === -1){
-        won.innerHTML = wins;
+    if (rightLetter.indexOf(" _ ") === -1) {
         outputW.innerHTML = ("Congratulations You Win");
-    var image = wordList.indexOf(ranWord);
+        var image = wordList.indexOf(ranWord);
         document.getElementById("wordImage").src = wordImage[image];
         wins++;
+        won.innerHTML = wins;
         startGame();
-    
+
     }
-    else if(allowedGuesses === 0){
+    else if (allowedGuesses === 0) {
         outputL.innerHTML = ("Sorry you Lost");
         startGame();
-    
+
     }
-    
-}  
+
+}
 
 
 
 // User input
 
-document.onkeyup = function(event){
-
-   var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-   updateGuessed(userGuess);
-   winLose();
+document.onkeyup = function (event) {
+    outputL.innerHTML = "";
+    outputW.innerHTML = "";
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+        updateGuessed(userGuess);
+        winLose();
+    }
+    else {
+        outputL.innerHTML = "Guess must be a letter";
+    }
 };
 
 
