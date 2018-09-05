@@ -2,7 +2,7 @@
 var wordList = ["elephant", "giraffe", "tiger", "turtle", "zebra", "lion", "gorilla"];
 
 //Image List
-var wordImage =["assets/images/imageE", "assets/images/imageG.jpg", "assests/images/imageT.jpg", "assets/images/imageTU.jpg", "assets/images/imagesZ.jpg",
+var wordImage =["assets/images/imageE.jpg", "assets/images/imageG.jpg", "assets/images/imageT.jpg", "assets/images/imageTU.jpg", "assets/images/imagesZ.jpg",
 "assets/images/lion.jpg", "assets/images/gorilla.jpg"];
 
 // Variables
@@ -28,6 +28,8 @@ function startGame(){
 rightLetter = [];
 allowedGuesses = 9;
 wrongLetter = [];
+// outputL = [];
+// outputW =[];
 
 //Choose word randomly 
     ranWord = wordList[Math.floor(Math.random() * wordList.length)];
