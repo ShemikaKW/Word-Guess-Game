@@ -46,7 +46,7 @@ function startGame() {
 function updateGuessed(letter) {
 
     if (wrongLetter.indexOf(letter) > -1) {
-        outputL.innerHTML = ("Already Guessed Letter");
+        outputL.innerHTML = ("That Letter Has Already Been Guessed!");
     }
 
     else if (ranWord.indexOf(letter) === -1) {
@@ -75,7 +75,7 @@ function updateGuessed(letter) {
 function winLose() {
 
     if (rightLetter.indexOf(" _ ") === -1) {
-        outputW.innerHTML = ("Congratulations You Win");
+        outputW.innerHTML = ("Congratulations You Win!!!!!");
         var image = wordList.indexOf(ranWord);
         document.getElementById("wordImage").src = wordImage[image];
         wins++;
@@ -84,7 +84,7 @@ function winLose() {
 
     }
     else if (allowedGuesses === 0) {
-        outputL.innerHTML = ("Sorry you Lost");
+        outputL.innerHTML = ("Sorry you Lost!");
         startGame();
 
     }
