@@ -2,7 +2,7 @@
 
 Hangman game
 
-Zoo theme
+Zoo theme.
 All words are animals you can find at the Zoo.
 
 If the word is duck, display it like this when the game starts: _ _ _  _.
